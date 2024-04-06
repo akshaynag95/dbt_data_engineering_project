@@ -1,0 +1,26 @@
+version: 2
+
+sources:
+  - name: raw_data
+    description: source raw data
+    database: procore_it_dev_anagendra
+    schema: raw
+    tables: 
+      - name: orders
+        description: main order tracking table
+
+        columns:
+          - name: o_orderkey
+            tests:
+              - unique
+              - not_null
+      - name: lineitem
+        description: main lineitem table
+
+        columns:
+          - name: l_order_key
+            description: Foreign key to o_orderkey
+            tests:
+              - relationships:
+                  to: source('raw_data','orders')
+                  field: o_orderkey
