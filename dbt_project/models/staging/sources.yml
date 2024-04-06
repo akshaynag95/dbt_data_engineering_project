@@ -18,7 +18,7 @@ sources:
         description: main lineitem table
 
         columns:
-          - name: l_order_key
+          - name: l_orderkey
             description: Foreign key to o_orderkey
             tests:
               - relationships:
